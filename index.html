@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tshenolo Tau</title>
+<meta name="description" content="CV of Tshenolo Tau — future engineer with a passion for IT, computing and the built environment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,800;1,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  // pick the theme before first paint to avoid a flash
+  (function () {
+    var t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+</head>
+<body>
+
+<!-- ============ INTRO / CALENDAR TRANSITION ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-band"></div>
+  <div class="loader-inner">
+    <div class="cal">
+      <span class="cal-md" id="loaderDate">10/12</span>
+      <span class="cal-wd" id="loaderDay">Mon</span>
+    </div>
+    <div class="cal-sub" id="loaderSub">Initialising profile</div>
+    <div class="loader-bar"><i id="loaderBar"></i></div>
+  </div>
+</div>
+
+<div class="cal-flip" id="calFlip" aria-hidden="true">
+  <div class="flip-band"></div>
+  <div class="flip-content">
+    <div class="cal">
+      <span class="cal-md" id="flipDate">10/12</span>
+      <span class="cal-wd" id="flipDay">Mon</span>
+    </div>
+    <div class="flip-title" id="flipTitle">About</div>
+  </div>
+</div>
+
+<!-- slash effect (logo easter egg) -->
+<div class="slash" id="slash" aria-hidden="true"><i></i><i></i></div>
+
+<!-- light-mode background sigils -->
+<div class="sigils" aria-hidden="true">
+  <svg class="sg sg-ring" viewBox="0 0 200 200" aria-hidden="true">
+    <path d="M12 100 A88 88 0 1 0 188 100 A88 88 0 1 0 12 100" pathLength="1" style="--d:0.00s"/>
+    <path d="M36 100 A64 64 0 1 0 164 100 A64 64 0 1 0 36 100" pathLength="1" style="--d:0.07s"/>
+    <path d="M94 100 A6 6 0 1 0 106 100 A6 6 0 1 0 94 100" pathLength="1" style="--d:0.14s"/>
+    <path d="M188.0 100.0 L200.0 100.0 M185.0 122.8 L190.8 124.3 M176.2 144.0 L181.4 147.0 M162.2 162.2 L166.5 166.5 M144.0 176.2 L147.0 181.4 M122.8 185.0 L124.3 190.8 M100.0 188.0 L100.0 200.0 M77.2 185.0 L75.7 190.8 M56.0 176.2 L53.0 181.4 M37.8 162.2 L33.5 166.5 M23.8 144.0 L18.6 147.0 M15.0 122.8 L9.2 124.3 M12.0 100.0 L0.0 100.0 M15.0 77.2 L9.2 75.7 M23.8 56.0 L18.6 53.0 M37.8 37.8 L33.5 33.5 M56.0 23.8 L53.0 18.6 M77.2 15.0 L75.7 9.2 M100.0 12.0 L100.0 0.0 M122.8 15.0 L124.3 9.2 M144.0 23.8 L147.0 18.6 M162.2 37.8 L166.5 33.5 M176.2 56.0 L181.4 53.0 M185.0 77.2 L190.8 75.7" pathLength="1" style="--d:0.21s"/>
+    <path d="M100 28 L105 95 L172 100 L105 105 L100 172 L95 105 L28 100 L95 95 Z" pathLength="1" style="--d:0.28s"/>
+    <path d="M142.3 145.3 A3 3 0 1 0 148.3 145.3 A3 3 0 1 0 142.3 145.3" pathLength="1" style="--d:0.35s"/>
+    <path d="M51.7 54.7 A3 3 0 1 0 57.7 54.7 A3 3 0 1 0 51.7 54.7" pathLength="1" style="--d:0.42s"/>
+  </svg>
+  <svg class="sg sg-spine" viewBox="0 0 120 480" aria-hidden="true">
+    <path d="M60 10 L60 470" pathLength="1" style="--d:0.30s"/>
+    <path d="M60 10 L66 28 L60 46 L54 28 Z" pathLength="1" style="--d:0.37s"/>
+    <path d="M60 110 C44 106 30 90 22 58 C30 78 38 82 46 80" pathLength="1" style="--d:0.44s"/>
+    <path d="M 60 110 C 76 106 90 90 98 58 C 90 78 82 82 74 80" pathLength="1" style="--d:0.51s"/>
+    <path d="M60 122 C48 126 40 142 36 172" pathLength="1" style="--d:0.58s"/>
+    <path d="M 60 122 C 72 126 80 142 84 172" pathLength="1" style="--d:0.65s"/>
+    <path d="M19.8 54 A2.2 2.2 0 1 0 24.2 54 A2.2 2.2 0 1 0 19.8 54" pathLength="1" style="--d:0.72s"/>
+    <path d="M95.8 54 A2.2 2.2 0 1 0 100.2 54 A2.2 2.2 0 1 0 95.8 54" pathLength="1" style="--d:0.79s"/>
+    <path d="M60 230 C44 226 30 210 22 178 C30 198 38 202 46 200" pathLength="1" style="--d:0.86s"/>
+    <path d="M 60 230 C 76 226 90 210 98 178 C 90 198 82 202 74 200" pathLength="1" style="--d:0.93s"/>
+    <path d="M60 242 C48 246 40 262 36 292" pathLength="1" style="--d:1.00s"/>
+    <path d="M 60 242 C 72 246 80 262 84 292" pathLength="1" style="--d:1.07s"/>
+    <path d="M19.8 174 A2.2 2.2 0 1 0 24.2 174 A2.2 2.2 0 1 0 19.8 174" pathLength="1" style="--d:1.14s"/>
+    <path d="M95.8 174 A2.2 2.2 0 1 0 100.2 174 A2.2 2.2 0 1 0 95.8 174" pathLength="1" style="--d:1.21s"/>
+    <path d="M60 350 C44 346 30 330 22 298 C30 318 38 322 46 320" pathLength="1" style="--d:1.28s"/>
+    <path d="M 60 350 C 76 346 90 330 98 298 C 90 318 82 322 74 320" pathLength="1" style="--d:1.35s"/>
+    <path d="M60 362 C48 366 40 382 36 412" pathLength="1" style="--d:1.42s"/>
+    <path d="M 60 362 C 72 366 80 382 84 412" pathLength="1" style="--d:1.49s"/>
+    <path d="M19.8 294 A2.2 2.2 0 1 0 24.2 294 A2.2 2.2 0 1 0 19.8 294" pathLength="1" style="--d:1.56s"/>
+    <path d="M95.8 294 A2.2 2.2 0 1 0 100.2 294 A2.2 2.2 0 1 0 95.8 294" pathLength="1" style="--d:1.63s"/>
+    <path d="M55 160 L65 160 M55 168 L65 168 M55 176 L65 176 M55 280 L65 280 M55 288 L65 288 M55 296 L65 296 M55 400 L65 400 M55 408 L65 408 M55 416 L65 416" pathLength="1" style="--d:1.70s"/>
+    <path d="M60 470 L50 450 M60 470 L70 450" pathLength="1" style="--d:1.77s"/>
+  </svg>
+  <svg class="sg sg-circuit" viewBox="0 0 300 200" aria-hidden="true">
+    <path d="M0 150 L80 150 L110 120 L180 120" pathLength="1" style="--d:0.50s"/>
+    <path d="M180 120 A4 4 0 1 0 188 120 A4 4 0 1 0 180 120" pathLength="1" style="--d:0.57s"/>
+    <path d="M0 170 L120 170 L140 150 L220 150 L240 130" pathLength="1" style="--d:0.64s"/>
+    <path d="M239 127 A4 4 0 1 0 247 127 A4 4 0 1 0 239 127" pathLength="1" style="--d:0.71s"/>
+    <path d="M0 130 L50 130 L70 110 L70 60" pathLength="1" style="--d:0.78s"/>
+    <path d="M66 56 A4 4 0 1 0 74 56 A4 4 0 1 0 66 56" pathLength="1" style="--d:0.85s"/>
+    <path d="M188 118 C212 108 230 88 236 58 C228 78 216 84 204 84" pathLength="1" style="--d:0.92s"/>
+    <path d="M70 52 C66 36 56 26 40 22 C52 30 54 38 52 46" pathLength="1" style="--d:0.99s"/>
+  </svg>
+  <svg class="sg sg-star" viewBox="0 0 160 160" aria-hidden="true">
+    <path d="M80 6 C76 40 70 62 80 80" pathLength="1" style="--d:0.70s"/>
+    <path d="M 80 6 C 84 40 90 62 80 80" pathLength="1" style="--d:0.77s"/>
+    <path d="M80 154 C76 120 70 98 80 80" pathLength="1" style="--d:0.84s"/>
+    <path d="M 80 154 C 84 120 90 98 80 80" pathLength="1" style="--d:0.91s"/>
+    <path d="M80 80 C60 72 40 74 12 58 C28 72 32 80 28 94" pathLength="1" style="--d:0.98s"/>
+    <path d="M 80 80 C 100 72 120 74 148 58 C 132 72 128 80 132 94" pathLength="1" style="--d:1.05s"/>
+    <path d="M70 80 A10 10 0 1 0 90 80 A10 10 0 1 0 70 80" pathLength="1" style="--d:1.12s"/>
+    <path d="M40 80 A40 40 0 1 0 120 80 A40 40 0 1 0 40 80" pathLength="1" style="--d:1.19s"/>
+  </svg>
+  <svg class="sg sg-arcs" viewBox="0 0 260 260" aria-hidden="true">
+    <path d="M30 260 C30 140 140 30 260 30" pathLength="1" style="--d:0.40s"/>
+    <path d="M80 260 C80 168 168 80 260 80" pathLength="1" style="--d:0.47s"/>
+    <path d="M70 132 C58 122 54 108 58 92 C62 104 70 110 80 112" pathLength="1" style="--d:0.54s"/>
+    <path d="M132 70 C122 58 108 54 92 58 C104 62 110 70 112 80" pathLength="1" style="--d:0.61s"/>
+    <path d="M44 170 A3 3 0 1 0 50 170 A3 3 0 1 0 44 170" pathLength="1" style="--d:0.68s"/>
+    <path d="M167 47 A3 3 0 1 0 173 47 A3 3 0 1 0 167 47" pathLength="1" style="--d:0.75s"/>
+    <path d="M130 260 L130 230 L160 200 M260 130 L230 130 L200 160" pathLength="1" style="--d:0.82s"/>
+  </svg>
+</div>
+
+<!-- custom cursor -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"><span id="cursorLabel"></span></div>
+
+<!-- scroll progress -->
+<div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <nav class="nav" aria-label="Sections">
+    <a href="#about" data-cursor="Go"><b>01</b>About</a>
+    <a href="#experience" data-cursor="Go"><b>02</b>Experience</a>
+    <a href="#education" data-cursor="Go"><b>03</b>Education</a>
+    <a href="#career" data-cursor="Go"><b>04</b>Sport</a>
+    <a href="#skills" data-cursor="Go"><b>05</b>Skills</a>
+    <a href="#contact" data-cursor="Go"><b>06</b>Contact</a>
+  </nav>
+  <div class="top-right">
+    <button class="theme-btn" id="themeBtn" data-cursor="Theme" aria-label="Switch to light mode">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="darkhour-btn" id="darkHourBtn" data-cursor="Enter..." aria-pressed="false" aria-label="Start the Dark Hour">
+      <span class="dh-clock" id="clock">00:00</span>
+      <span class="dh-label">Dark Hour</span>
+    </button>
+    <a href="#top" class="logo" id="logo" aria-label="Back to top" data-cursor="Awaken">
+      <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path class="s-frame" d="M6 20 L6 6 L20 6 M100 6 L114 6 L114 20 M114 100 L114 114 L100 114 M20 114 L6 114 L6 100" stroke-width="1"/>
+        <path class="s-blade" d="M60 4 L64.5 18 L62.5 80 L57.5 80 L55.5 18 Z" stroke-width="1.6"/>
+        <path class="s-fuller" d="M60 20 L60 76" stroke-width="0.9"/>
+        <path class="s-guard" d="M42 84 L50 80 L70 80 L78 84 M42 84 L38 78 M78 84 L82 78" stroke-width="1.7"/>
+        <path class="s-grip" d="M60 84 L60 101 M57 90 L63 88 M57 96 L63 94" stroke-width="1.5"/>
+        <path class="s-pommel" d="M60 101 L64 107 L60 113 L56 107 Z" stroke-width="1.5"/>
+        <path class="s-thorn" d="M57 28 C46 28 36 22 30 8 L32 18 C27 20 23 24 21 30 C29 28 35 32 39 40" stroke-width="1.2"/>
+        <path class="s-thorn" d="M 63 28 C 74 28 84 22 90 8 L 88 18 C 93 20 97 24 99 30 C 91 28 85 32 81 40" stroke-width="1.2"/>
+        <path class="s-thorn" d="M57 50 C44 50 32 58 14 56 L22 52 C20 48 20 44 24 40 C30 47 38 48 44 44" stroke-width="1.2"/>
+        <path class="s-thorn" d="M 63 50 C 76 50 88 58 106 56 L 98 52 C 100 48 100 44 96 40 C 90 47 82 48 76 44" stroke-width="1.2"/>
+        <path class="s-thorn" d="M57 88 C48 92 40 96 34 110 L34 100 C30 98 26 98 22 100" stroke-width="1.2"/>
+        <path class="s-thorn" d="M 63 88 C 72 92 80 96 86 110 L 86 100 C 90 98 94 98 98 100" stroke-width="1.2"/>
+        <path class="s-circuit" d="M57 66 L46 66 L40 72 L30 72" stroke-width="0.9"/>
+        <path class="s-circuit" d="M 63 66 L 74 66 L 80 72 L 90 72" stroke-width="0.9"/>
+        <path class="s-circuit" d="M56 40 L50 34 L50 22" stroke-width="0.9"/>
+        <path class="s-circuit" d="M 64 40 L 70 34 L 70 22" stroke-width="0.9"/>
+        <circle class="s-node" cx="28" cy="72" r="1.8" stroke-width="0.9"/>
+        <circle class="s-node" cx="92" cy="72" r="1.8" stroke-width="0.9"/>
+        <circle class="s-node" cx="50" cy="20" r="1.8" stroke-width="0.9"/>
+        <circle class="s-node" cx="70" cy="20" r="1.8" stroke-width="0.9"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="moon" aria-hidden="true"></div>
+  <div class="hero-text">
+    <p class="kicker reveal">// Gap year 2026 &mdash; Johannesburg, South Africa</p>
+    <h1 class="name" aria-label="Tshenolo Tau">
+      <span class="line split">TSHENOLO</span>
+      <span class="line split accent">TAU</span>
+    </h1>
+    <p class="lede reveal">Future engineer with a strong interest in innovation, computing and engineering. Driven by the three E's &mdash; <em>Education</em>, <em>Exposure</em> and <em>Experience</em>.</p>
+    <div class="hero-cta reveal">
+      <a href="#contact" class="btn primary magnetic" data-cursor="Hi">Get in touch <span>&rarr;</span></a>
+      <a href="#experience" class="btn ghost magnetic" data-cursor="Go">See experience</a>
+    </div>
+  </div>
+
+  <div class="portrait-wrap reveal">
+    <div class="portrait" id="portrait" data-cursor="Hello">
+      <div class="portrait-img"><img src="photo.jpg" alt="Portrait of Tshenolo Tau"></div>
+      <div class="portrait-glare"></div>
+      <div class="portrait-tag">
+        <span>TAU, T.</span>
+        <span>NO. 001</span>
+      </div>
+      <div class="portrait-stats">
+        <div><small>Currently</small><b>At Everon</b></div>
+        <div><small>Region</small><b>Gauteng</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee">
+    <span>Adaptable</span><span class="dia">&#9670;</span>
+    <span class="solid">Problem solver</span><span class="dia">&#9670;</span>
+    <span>Curious</span><span class="dia">&#9670;</span>
+    <span class="solid">Vice-captain</span><span class="dia">&#9670;</span>
+    <span>Analytical</span><span class="dia">&#9670;</span>
+    <span class="solid">Intuitive</span><span class="dia">&#9670;</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" data-title="About">
+  <header class="sec-head reveal">
+    <span class="sec-num">01</span>
+    <h2>About</h2>
+  </header>
+
+  <div class="about-grid">
+    <div class="about-copy reveal">
+      <p class="big">I'm a motivated and curious young adult, currently in a <mark>gap year (2026)</mark>. I've upgraded my Mathematics and Physical Science marks to strengthen my foundation for a career in the information technology and engineering industry.</p>
+      <p>I'm looking for real-world opportunities &mdash; employment, internships or job shadowing within Gauteng &mdash; to grow both my technical and professional skills. I'm committed to continuous learning and enjoy working both independently and collaboratively to solve problems and deliver quality work.</p>
+      <p>At Fourways High School, sport taught me discipline, resilience, teamwork and leadership, and serving as vice-captain strengthened my decision-making and accountability. My subject choices sharpened my problem-solving, critical thinking, attention to detail and creativity &mdash; qualities essential in the information technology and engineering sectors. Through my passion for innovation, I'm confident I can make a meaningful contribution to engineering and technology.</p>
+    </div>
+
+    <div class="es">
+      <article class="e-card reveal" data-cursor="Flip" tabindex="0">
+        <div class="e-inner">
+          <div class="e-front"><span class="e-letter">E</span><b>Education</b><small>01 / 03</small></div>
+          <div class="e-back"><b>Education</b><p>NSC Bachelor Pass in 2025, then upgraded my Maths and Physical Science marks to go further.</p></div>
+        </div>
+      </article>
+      <article class="e-card reveal" data-cursor="Flip" tabindex="0">
+        <div class="e-inner">
+          <div class="e-front"><span class="e-letter">E</span><b>Exposure</b><small>02 / 03</small></div>
+          <div class="e-back"><b>Exposure</b><p>On construction sites, in a corporate office and in sales &mdash; seeing how engineering and business really work.</p></div>
+        </div>
+      </article>
+      <article class="e-card reveal" data-cursor="Flip" tabindex="0">
+        <div class="e-inner">
+          <div class="e-front"><span class="e-letter">E</span><b>Experience</b><small>03 / 03</small></div>
+          <div class="e-back"><b>Experience</b><p>Now working at Everon, after three internships &mdash; and hungry for more hands-on work.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section" id="experience" data-title="Experience">
+  <header class="sec-head reveal">
+    <span class="sec-num">02</span>
+    <h2>Experience</h2>
+  </header>
+
+  <ol class="jobs">
+    <li class="job reveal" data-cursor="Open">
+      <button class="job-row" aria-expanded="false">
+        <span class="job-when">Aug 2026 &mdash; Now</span>
+        <span class="job-where">Everon</span>
+        <span class="job-role">Sales</span>
+        <span class="job-arrow" aria-hidden="true">&#8599;</span>
+      </button>
+      <div class="job-body"><div>
+        <span class="live">Current</span>
+        <p>Working in sales at Everon since August 2026.</p>
+        <!-- TODO: add 2–3 lines on responsibilities -->
+      </div></div>
+    </li>
+    <li class="job reveal" data-cursor="Open">
+      <button class="job-row" aria-expanded="false">
+        <span class="job-when">25 Jan 2026 &mdash; 24 Apr 2026</span>
+        <span class="job-where">The Insurance Institute of South Africa</span>
+        <span class="job-role">Intern &middot; Marketing and finance<span class="award">&#9733; Employee of the Month</span></span>
+        <span class="job-arrow" aria-hidden="true">&#8599;</span>
+      </button>
+      <div class="job-body"><div>
+        <span class="dates">25 January 2026 &ndash; 24 April 2026 &middot; 3 months</span>
+        <p>Intern in the marketing and finance department. Awarded <strong>Employee of the Month</strong> for March.</p>
+        <!-- TODO: add 2–3 lines on responsibilities -->
+      </div></div>
+    </li>
+    <li class="job reveal" data-cursor="Open">
+      <button class="job-row" aria-expanded="false">
+        <span class="job-when">24 Nov 2025 &mdash; 12 Dec 2025</span>
+        <span class="job-where">Stefanutti Stocks</span>
+        <span class="job-role">Intern &middot; On-site engineer</span>
+        <span class="job-arrow" aria-hidden="true">&#8599;</span>
+      </button>
+      <div class="job-body"><div>
+        <span class="dates">24 November 2025 &ndash; 12 December 2025 &middot; 3 weeks</span>
+        <p>Returned for a second on-site engineering internship.</p>
+        <!-- TODO: add what you worked on during this stint -->
+      </div></div>
+    </li>
+    <li class="job reveal" data-cursor="Open">
+      <button class="job-row" aria-expanded="false">
+        <span class="job-when">1 Jul 2025 &mdash; 18 Jul 2025</span>
+        <span class="job-where">Stefanutti Stocks</span>
+        <span class="job-role">Intern &middot; On-site engineer</span>
+        <span class="job-arrow" aria-hidden="true">&#8599;</span>
+      </button>
+      <div class="job-body"><div>
+        <span class="dates">1 July 2025 &ndash; 18 July 2025 &middot; 3 weeks</span>
+        <p>First on-site engineering internship, working with the construction supervisor and site manager.</p>
+        <!-- TODO: add what you worked on during this stint -->
+      </div></div>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="section" id="education" data-title="Education">
+  <header class="sec-head reveal">
+    <span class="sec-num">03</span>
+    <h2>Education</h2>
+  </header>
+
+  <div class="edu">
+    <div class="edu-card reveal">
+      <div class="edu-year">2025</div>
+      <div>
+        <h3>NSC Matric Certificate</h3>
+        <p class="edu-sub">Bachelor Pass &middot; Fourways High School</p>
+      </div>
+    </div>
+    <div class="edu-card reveal now">
+      <div class="edu-year">2026</div>
+      <div>
+        <h3>Gap year upgrade</h3>
+        <p class="edu-sub">Upgraded Mathematics and Physical Science marks</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="label reveal">Subject choices &mdash; hover them</p>
+  <ul class="chips reveal">
+    <li data-cursor="&#9733;">Mathematics</li>
+    <li data-cursor="&#9733;">Physical Sciences</li>
+    <li data-cursor="&#9733;">Engineering Graphics and Design</li>
+    <li data-cursor="&#9733;">Information Technology</li>
+    <li data-cursor="&#9733;">English Home Language</li>
+    <li data-cursor="&#9733;">Afrikaans FAL</li>
+    <li data-cursor="&#9733;">Life Orientation</li>
+  </ul>
+</section>
+
+<!-- ============ HIGH SCHOOL CAREER ============ -->
+<section class="section" id="career" data-title="Sport">
+  <header class="sec-head reveal">
+    <span class="sec-num">04</span>
+    <h2>High school career</h2>
+  </header>
+
+  <div class="years reveal" role="tablist" aria-label="Year">
+    <button role="tab" aria-selected="true" data-year="2023" data-cursor="2023">2023</button>
+    <button role="tab" aria-selected="false" data-year="2024" data-cursor="2024">2024</button>
+    <button role="tab" aria-selected="false" data-year="2025" data-cursor="2025">2025</button>
+  </div>
+
+  <div class="teams reveal">
+    <ul class="team-list active" data-year="2023">
+      <li><span>Orienteering</span><small>Team</small></li>
+      <li><span>Cross country</span><small>Team</small></li>
+      <li><span>Rugby</span><small>U/16</small></li>
+      <li><span>Athletics</span><small>Middle distance</small></li>
+    </ul>
+    <ul class="team-list" data-year="2024">
+      <li><span>Cross country</span><small>Senior team</small></li>
+      <li class="star"><span>Volleyball</span><small>2nd team &middot; Vice-captain</small></li>
+      <li><span>Athletics</span><small>Middle distance</small></li>
+    </ul>
+    <ul class="team-list" data-year="2025">
+      <li class="star"><span>Volleyball</span><small>1st team</small></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills" data-title="Skills">
+  <header class="sec-head reveal">
+    <span class="sec-num">05</span>
+    <h2>Skills</h2>
+  </header>
+
+  <div class="skill-cols">
+    <div class="skill-group reveal">
+      <h3>Key competencies</h3>
+      <ul>
+        <li>Adaptability</li>
+        <li>Problem solving</li>
+        <li>Curiosity</li>
+        <li>Intuition</li>
+        <li>Analytical and critical thinking</li>
+        <li>Communication and interpersonal skills</li>
+        <li>Creativity</li>
+      </ul>
+    </div>
+    <div class="skill-group reveal">
+      <h3>Technical knowledge</h3>
+      <ul>
+        <li>Engineering principles</li>
+        <li>Design and architecture</li>
+        <li>Technical drawing and drafting</li>
+        <li>Computer and information systems</li>
+        <li>Solution-oriented</li>
+        <li>Digital marketing</li>
+        <li>Data administration</li>
+      </ul>
+    </div>
+    <div class="skill-group reveal">
+      <h3>Computer skills</h3>
+      <ul>
+        <li>Microsoft Word</li>
+        <li>Excel</li>
+        <li>PowerPoint</li>
+        <li>Outlook</li>
+        <li>Access</li>
+        <li>Teams</li>
+        <li>RAD Studio Delphi</li>
+      </ul>
+      <h3 class="mt">Languages</h3>
+      <ul>
+        <li>English &mdash; native</li>
+        <li>Afrikaans &mdash; first additional</li>
+      </ul>
+      <h3 class="mt">Licences</h3>
+      <ul>
+        <li>Driver's licence &mdash; Code 8</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact" data-title="Contact">
+  <header class="sec-head reveal">
+    <span class="sec-num">06</span>
+    <h2>Contact</h2>
+  </header>
+
+  <p class="contact-kicker reveal">Got an internship, job or job-shadowing opportunity?</p>
+  <button class="mail reveal" id="copyMail" data-cursor="Copy" data-copy="tshenolondlovu58@gmail.com" data-copied="Email copied">
+    <span>tshenolondlovu58</span><span>@gmail.com</span>
+  </button>
+  <div class="contact-row reveal">
+    <a class="btn ghost magnetic" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=tshenolondlovu58@gmail.com" target="_blank" rel="noopener" data-cursor="Gmail">Send an email <span aria-hidden="true">&#8599;</span></a>
+    <button class="btn ghost magnetic" type="button" data-cursor="Copy" data-copy="+27 66 230 8528" data-copied="Number copied" aria-label="Copy phone number +27 66 230 8528">+27 66 230 8528</button>
+  </div>
+  <p class="refs reveal">South African citizen &middot; References available on request</p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span>&copy; <span id="year">2026</span> Tshenolo Tau</span>
+  <span class="foot-hint">Psst &mdash; try pressing <kbd>D</kbd>, or click the sword three times.</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
