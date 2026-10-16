@@ -501,8 +501,8 @@ body.dark-hour .moon { opacity: .55; transform: none; }
 }
 .portrait-img img {
   width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 40%;
-  transform: scale(1.3) translateY(9%);
+  object-fit: cover; object-position: 50% 22%; /* head and shoulders of a tall photo */
+  transform: scale(1.45) translateX(1%);
   filter: saturate(.85) contrast(1.05);
   transition: transform .8s var(--ease), filter .5s;
 }
@@ -513,7 +513,7 @@ body.dark-hour .moon { opacity: .55; transform: none; }
   opacity: .38;
   transition: opacity .5s;
 }
-.portrait:hover .portrait-img img { transform: scale(1.38) translateY(8%); filter: saturate(1) contrast(1.05); }
+.portrait:hover .portrait-img img { transform: scale(1.52) translateX(1%); filter: saturate(1) contrast(1.05); }
 .portrait:hover .portrait-img::after { opacity: .25; }
 .portrait-glare {
   position: absolute; inset: 0; pointer-events: none;
